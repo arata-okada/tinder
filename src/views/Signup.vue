@@ -28,13 +28,16 @@ export default {
     };
   },
   methods: {
-    signup() {
+    signUp() {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           data.user.updateProfile({
             displayName: this.name,
+          });
+          data.user.sendEmailVerification().then(() => {
+            this.$router.replace("/signin");
           });
         });
     },

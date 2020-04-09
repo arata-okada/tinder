@@ -8593,7 +8593,14 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.11:
+vue-tinder@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vue-tinder/-/vue-tinder-2.0.0.tgz#82dff85523042992ac230676dcf33f3345af282a"
+  integrity sha512-3HfR7ibGplGMwoh5v8AMeoqIaAG4+tHJz4pT3XIqtPsppAoP2994UjnX+7E5BhdCqFTa9GQzx/9XIMbqlwyBTw==
+  dependencies:
+    vue "^2.6.10"
+
+vue@^2.6.10, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha1-dllNh31LEiNEBuhONSdcbVFBJcU=
