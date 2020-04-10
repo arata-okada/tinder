@@ -3,19 +3,17 @@
     <div class="card">
       <p class="title">ログイン</p>
       <div class="form">
-        <input v-model="email" type="email" placeholder="メールアドレス" />
-        <input v-model="password" type="password" placeholder="パスワード" />
-        <button @click="signin">ログイン</button>
+        <input placeholder="メールアドレス" type="email" v-model="email" />
+        <input placeholder="パスワード" type="password" v-model="password" />
+        <button @click="signIn">ログイン</button>
         <p class="login">
-          会員登録は<a class="router" @click="$router.push('/signup')"
-            >こちら</a
-          >
+          会員登録は
+          <a class="router" @click="$router.push('/signup')">こちら</a>
         </p>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import firebase from "firebase";
 export default {
@@ -26,10 +24,10 @@ export default {
     };
   },
   methods: {
-    signin() {
+    signIn() {
       firebase
         .auth()
-        .signinWithEmailAndPassword(this.email, this.password)
+        .signInWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           if (data.user.emailVerified) {
             this.$store.dispatch("changeUserAction", {

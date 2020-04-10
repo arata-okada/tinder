@@ -14,6 +14,7 @@
     </div>
   </div>
 </template>
+
 <style scoped>
 #about {
   width: 400px;
@@ -50,26 +51,16 @@ export default {
       likes: [],
     };
   },
-  async created() {
-    await this.getImage();
-  },
-  methods: {
-    async getImage() {
-      this.likes = [];
-      var db = firebase.firestore();
-      const data = await db
-        .collection("likes")
-        .where("email", "==", this.$store.state.user.email)
-        .get();
-      for (let i = 0; i < data.docs.length; i++) {
-        const like = await db
-          .collection("people")
-          .where("url", "==", data.docs[i].data().url)
-          .get();
-
-        this.likes.push(like.docs[0].data());
-      }
-    },
+  created() {
+    var db = firebase.firestore();
+    db.collection("likes")
+      .get()
+      .then((query) => {
+        query.forEach((doc) => {
+          var data = doc.data();
+          this.likes.push(data);
+        });
+      });
   },
 };
 </script>

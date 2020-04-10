@@ -23,6 +23,7 @@
     </div>
   </div>
 </template>
+
 <style scoped>
 #home .vue-tinder {
   position: absolute;
@@ -138,31 +139,23 @@ export default {
         this.people.push(element.data());
       });
     },
-    async onSubmit(choice) {
-      if (this.queue.length < 3) {
-        this.mock();
-      }
+    async addLikes(index, url) {
       var db = firebase.firestore();
       const data = await db
         .collection("likes")
-        .where("url", "==", choice.item.url)
+        .where("url", "==", url)
         .where("email", "==", this.$store.state.user.email)
         .get();
-      if (data.empty && choice.type == "like") {
-        await db.collection("likes").add({
+      if (data.empty == true) {
+        db.collection("likes").add({
           email: this.$store.state.user.email,
-          url: choice.item.url,
+          url: url,
+          name: this.users[index - 1].name,
         });
       }
-      if (!data.empty && choice.type == "nope") {
-        await db
-          .collection("likes")
-          .doc(data.docs[0].id)
-          .delete();
-      }
-    },
-    decide(choice) {
-      this.$refs.tinder.decide(choice);
+      this.usersLen -= 1;
+      // ボタンのロックを解除
+      this.endProcessing();
     },
   },
 };

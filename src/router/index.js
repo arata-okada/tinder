@@ -14,7 +14,7 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      requireAuth: true,
+      requiresAuth: true,
     },
   },
   {
@@ -61,4 +61,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
 export default router;

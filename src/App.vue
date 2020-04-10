@@ -3,14 +3,13 @@
     <router-view />
   </div>
 </template>
-
 <style>
 * {
   margin: 0;
   padding: 0;
   border: 0;
   color: white;
-  font-family: "Note Sans JP";
+  font-family: "Noto Sans JP";
 }
 html,
 body {

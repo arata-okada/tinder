@@ -3,8 +3,9 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
 admin.initializeApp(functions.config().firebase);
+
 exports.writeUrl = functions.storage.object().onFinalize((object) => {
-  const bucketName = "test-339cd.appspot.com";
+  const bucketName = "project-id.appspot.com";
   const filePath = object.name;
   const name = filePath.split(".").shift();
   const db = admin.firestore();

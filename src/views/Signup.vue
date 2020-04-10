@@ -3,14 +3,13 @@
     <div class="card">
       <p class="title">新規登録</p>
       <div class="form">
-        <input v-model="name" type="text" placeholder="ユーザネーム" />
-        <input v-model="email" type="email" placeholder="メールアドレス" />
-        <input v-model="password" type="password" placeholder="パスワード" />
-        <button @click="signup">登録</button>
+        <input placeholder="ユーザーネーム" type="text" v-model="name" />
+        <input placeholder="メールアドレス" type="email" v-model="email" />
+        <input placeholder="パスワード" type="password" v-model="password" />
+        <button @click="signUp">登録</button>
         <p class="login">
-          ログインの<a class="router" @click="$router.push('/signin')"
-            >こちら</a
-          >
+          ログインは
+          <a class="router" @click="$router.push('/signin')">こちら</a>
         </p>
       </div>
     </div>
